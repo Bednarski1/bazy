@@ -1,0 +1,12 @@
+--1
+select COUNT(*) as 'ilosc', AVG(spalanie) as 'srednia', zasilanie from samochody group by zasilanie;
+--2
+select marka, AVG(cena) as 'srednia cena' from samochody where rocznik > 2005 group by marka having avg(cena) < 50000;
+--3
+select marka, avg(spalanie) as 'srednie spalanie', COUNT(*) from samochody where zasilanie != ('lpg') group by marka having COUNT(*) > 3;
+--4
+select top 1 miasto, count(*) as 'kierowcy' from kierowca group by miasto order by COUNT(*) desc;
+--5
+select marka, AVG(cena) as 'cena', COUNT(*) as 'ilosc' from samochody where marka like 'f%' or marka like 'o%' group by marka having COUNT(*) > 3 and AVG(cena) <= 60000;
+--6
+select top 1 COUNT(kolor), kolor from samochody group by kolor order by COUNT(kolor) desc;
