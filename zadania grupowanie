@@ -1,0 +1,14 @@
+--najwieksza ilosc dziewczyn
+--select top 1 id_k, COUNT(*) as 'liczba' from Uczniowie where imie like '%a' and DATEDIFF(year, Data_ur, getdate()) >= 18 group by id_k order by liczba desc;
+--ilu nauczycieli ma ile lat
+--select * from nauczyciele
+--select COUNT(*) as 'liczba_nauczycieli', DATEDIFF(YEAR, data_ur, getdate()) as 'wiek' from Nauczyciele group by DATEDIFF(YEAR, data_ur, getdate())
+--klasy ktore maja srednia wieksza od 3.5
+--select id_k, AVG(srednia) from uczniowie group by Id_k having AVG(srednia) > 3.5
+--klasy ktore maja przynajmniej 11 chlopakow i zachowanie bardzo dobre i wzorowe
+--select id_k, COUNT(*) as 'ilosc' from Uczniowie where Imie not like '%a'and Id_z in (5,6) group by id_k having COUNT(*) >= 11 order by COUNT(*) desc
+--ile osob z jakiej klasy bedzie mialo swiadectwo z paskiem
+--select id_k, COUNT(*) as liczba_osob from Uczniowie where Srednia >= 4.75 and Id_z in (5,6) group by Id_k order by COUNT(*) desc
+--ile osob ma urodziny w wakacje
+select COUNT(*) as liczba, id_k from Uczniowie where Id_k = 17 and (MONTH(data_ur) in (7,8) or MONTH(data_ur) = 6 and DAY(data_ur) >= 23) group by Id_k order by COUNT(*) desc
+
